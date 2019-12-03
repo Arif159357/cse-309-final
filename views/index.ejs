@@ -36,9 +36,9 @@
     <script>
       var post = { title: "", time: "", text: ""};
       $("#submit").click(function() {
-          post_title = $("#title").val();
-          post_time =  $("#time").val();
-          post_text =  $("#text").val();
+          // post_title = $("#title").val();
+          // post_time =  $("#time").val();
+          // post_text =  $("#text").val();
           post.title = $("#title").val();
           post.time = $("#time").val();
           post.text = $("#text").val();
@@ -48,11 +48,13 @@
           data: post 
         })
           .done(response => {
-            var id = 
-	          id = JSON.stringify(id);
+            console.log(response._id)
+            id = response._id
+            window.location.replace('/stoic/find_data/'+ id);
+	          // id = JSON.stringify(id);
 
-	          let href = '/find_data/' + id;
-            window.location.href = href;
+	          // let href = '/find_data/' + id;
+            // window.location.href = href;
 
           })
           .fail(response => console.log(response));

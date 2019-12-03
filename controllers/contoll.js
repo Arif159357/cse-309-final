@@ -51,47 +51,47 @@ router.post('/post',(req,res)=>{
 //     })
 // })
 
-// router.get("/find_data/:id", (req, res) => {
-//     // console.log(articles[req.params.id]);
+router.get("/find_data/:id", (req, res) => {
+    // console.log(articles[req.params.id]);
   
-//     if (req.params.id) {
-//         console.log(req.params.id)
-//       POST_title.find({ _id: req.params.id }, (e, data) => {
-//         if (e) {
-//           return res.status(400).json({ msg: "Can't find result" });
-//         }
-//         // console.log(data[1]);
+    if (req.params.id) {
+        console.log(req.params.id)
+      POST_title.find({ _id: req.params.id }, (e, data) => {
+        if (e) {
+          return res.status(400).json({ msg: "Can't find result" });
+        }
+        // console.log(data[1]);
   
-//         return res.render("index2.ejs", {
-//           article: data[0]
-//         });
-//       });
-//     } else {
-//       res.json({ msg: "Article not found" });
-//     }
-//   });
+        return res.render("index2.ejs", {
+          article: data[0]
+        });
+      });
+    } else {
+      res.json({ msg: "Article not found" });
+    }
+  });
 
 
 
   
-router.get('/find_data/:id', (req, res) => {
-	console.log(JSON.parse(req.params.id));
-	var review = Review(JSON.parse(req.params.id)).save((e, data) => {
-		if (e) {
-			throw e;
-		}
-		var id = data._id;
+// router.get('/find_data/:id', (req, res) => {
+// 	// console.log(JSON.parse(req.params.id));
+// 	var review = Review((req.params.id)).save((e, data) => {
+// 		if (e) {
+// 			throw e;
+// 		}
+// 		var id = data._id;
 
-		var review2 = POST_title.find({ _id: id }, (e, data) => {
-			if (e) {
-				throw e;
-			}
-			console.log(data);
-			res.render('index2.ejs', {
-				article: data[0]
-			});
-		});
-	});
-})
+// 		var review2 = POST_title.find({ _id: id }, (e, data) => {
+// 			if (e) {
+// 				throw e;
+// 			}
+// 			console.log(data);
+// 			res.render('index2.ejs', {
+// 				article: data[0]
+// 			});
+// 		});
+// 	});
+// })
 
 module.exports = router
